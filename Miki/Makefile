@@ -4,4 +4,4 @@ all:
 	python main.py
 
 clean:
-	rm -rf html/
+	rm -rf html/*

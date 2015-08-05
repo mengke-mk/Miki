@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{{title}} | Septicmk</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="{{root_path}}/source/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/font-awesome.css" type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/style.css"  type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/highlight.css" type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/pygments.css" type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/google-fonts.css" type="text/css">
+  <link rel="stylesheet" href="{{root_path}}/source/css/responsive.css" type="text/css">  
+  <link rel="stylesheet" href="{{root_path}}/source/css/sidenav.css" type="text/css">  
+  <script src="{{root_path}}/source/js/jquery-2.0.3.min.js"></script>
+</head>
+<body  id="body" data-spy="scroll" data-target=".toc">
+    <div class="container" id="container">
+        <div class=content>
+            <div class=page-header>
+                <h1>
+                    <a class="brand" href="{{root_path}}/index.html">Septicmk</a>
+                    <span class="split"></span>
+                    <span class="title">{{title}}</span>
+                </h1>
+            </div>
+            <div class="row page">
+                <div class="col-xs-12 col-sm-3 col-md-3 toc">
+                    <!-- toc -->
+                    <script type="text/javascript">
+		                jQuery(document).ready(function() {
+ 		                    generateWikiTOC('.note', '.toc', 2, 2);
+		                });
+                    </script>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-9 note">
+                    {{content}}
+                </div>
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'septicmk';
+                    
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        </div>
+    </div>
+    <div class="container-narrow">
+        <footer>
+            <p>&copy; 2015 septicmk with help form <a href="https://github.com/lepture/mistune" target="_blank">mistune</a>.
+            Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/" target="_blank">Wixo</a></p>
+        </footer>
+    </div>
+    <script src="{{root_path}}/source/js/jquery.imagesloaded.min.js"></script>
+    <script src="{{root_path}}/source/js/gallery.js"></script>
+    <script src="{{root_path}}/source/js/bootstrap.min.js"></script>
+    <script src="{{root_path}}/source/js/jquery.tableofcontents.min.js"></script>
+    <script src="{{root_path}}/source/js/tocgenerator.min.js"></script>
+    <script src="{{root_path}}/source/js/main.js"></script>
+    <link rel="stylesheet" href="{{root_path}}/source/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+    <script src="{{root_path}}/source/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript">
+    (function($){
+    $('.fancybox').fancybox();
+    })(jQuery);
+    </script>
+</body>
+</html>

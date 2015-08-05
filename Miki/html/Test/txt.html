@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>txt | Septicmk</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/font-awesome.css" type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/style.css"  type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/highlight.css" type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/pygments.css" type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/google-fonts.css" type="text/css">
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/responsive.css" type="text/css">  
+  <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/css/sidenav.css" type="text/css">  
+  <script src="/home/septicmk/Miki/Miki/html/source/js/jquery-2.0.3.min.js"></script>
+</head>
+<body  id="body" data-spy="scroll" data-target=".toc">
+    <div class="container" id="container">
+        <div class=content>
+            <div class=page-header>
+                <h1>
+                    <a class="brand" href="/home/septicmk/Miki/Miki/html/index.html">Septicmk</a>
+                    <span class="split"></span>
+                    <span class="title">txt</span>
+                </h1>
+            </div>
+            <div class="row page">
+                <div class="col-xs-12 col-sm-3 col-md-3 toc">
+                    <!-- toc -->
+                    <script type="text/javascript">
+		                jQuery(document).ready(function() {
+ 		                    generateWikiTOC('.note', '.toc', 2, 2);
+		                });
+                    </script>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-9 note">
+                    <hr>
+<h1 id="toc-0">MEHI</h1>
+<p><a class="btn btn-info" href="http://hahack.com" target="_blank" rel="external">hahack</a>
+Mouse Embryo Heart Imagery</p>
+<p>╯　　　 　╰<br>
+  ●　　　 　 ●<br>
+  " 　 　^　　"</p>
+<p><a href="https://travis-ci.org/septicmk/MEHI"><img src="https://travis-ci.org/septicmk/MEHI.svg" alt="Build Status"></a></p>
+<h2 id="toc-1">About</h2>
+<p>MEHI is a python library for processing large-scale 3D spatial and temporal mouse embryo date. the paralleled version is built on Spark.</p>
+<p>MEHI includes the basic module for image processing, like preprocessing, registration, 2-side fusion, segmentation, tracking. the project contains two implementation, a paralleled version and a serial version. the paralleled version is written against Spark's Python API(Pyspark), making use of scipy, numpy, PuLP and pandas</p>
+<h2 id="toc-2">Requirements</h2>
+<ul>
+<li>Python 2.7</li>
+<li>numpy 1.9+</li>
+<li>pandas 0.16.1+</li>
+<li>matplotlib 1.4+</li>
+<li>PyWavelet 0.2.2+</li>
+<li>scikit-image 0.11+</li>
+<li>scipy 0.15+</li>
+<li>pyspark 1.3.0</li>
+<li>Cython 0.21+ </li>
+</ul>
+<h2 id="toc-3">Quick Start</h2>
+<p>The paralleled version is designed to run on a cluster, but currently, I just test it on local mode. Anyway, you can get it work by following steps.<br>
+1) change the Input dir in the MEHI_global.py or in the MEHI_s_global.py</p>
+<div class="source"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">MEHI</span>
+<span class="n">left_pwd</span> <span class="o">=</span> <span class="s">&#39;your image dir&#39;</span>
+<span class="n">right_pwd</span> <span class="o">=</span> <span class="s">&#39;your image dir&#39;</span>
+</pre></div>
+</td></tr></table></div>
+<p>2) modify the MEHI_main.py or the MEHI_s_main.py to customize your workflow</p>
+<div class="source"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">L_img_stack</span><span class="p">,</span> <span class="n">R_img_stack</span> <span class="o">=</span> <span class="n">init</span><span class="p">()</span>
+<span class="n">rddA</span><span class="p">,</span> <span class="n">rddB</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">L_img_stack</span><span class="p">,</span> <span class="n">R_img_stack</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">rddB</span> <span class="o">=</span> <span class="n">registration</span><span class="p">(</span><span class="n">rddA</span><span class="p">,</span> <span class="n">rddB</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fuse_img</span> <span class="o">=</span> <span class="n">fusion</span><span class="p">(</span><span class="n">rddA</span><span class="p">,</span> <span class="n">rddB</span><span class="p">)</span>
+<span class="n">segmentation</span><span class="p">(</span><span class="n">fuse_img</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>3) start MEHI from terminal</p>
+<div class="source"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>python MEHI_s_main.py
+</pre></div>
+</td></tr></table></div>
+<h2 id="toc-4">More Information</h2>
+<h3 id="toc-5">MEHI is broadly organized into:</h3>
+<ul>
+<li>A main class with methods for initialization of Spark and control of the whole workflow.</li>
+<li>Classes for image processing module,like MEHI_s_fusion.</li>
+<li>Helper components like MEHI_s_IO, MEHI_s_common</li>
+</ul>
+<h3 id="toc-6">core API:</h3>
+<p><strong>Preprocessing</strong>:</p>
+<ul>
+<li>stripe_removal(): 去横纹</li>
+<li>intensity_normalization(): 亮度平衡，图像压缩</li>
+<li>sub_background(): 减背景，去模糊  </li>
+</ul>
+<p><strong>Registation&amp;Fusion</strong>:</p>
+<ul>
+<li>mutual_info(): 计算互信息</li>
+<li>q_powell(): 计算对准向量</li>
+<li>get_trans(): 实施对准变换</li>
+<li>q_fusion(): 图像融合  </li>
+</ul>
+<p><strong>Segmentation</strong>:</p>
+<ul>
+<li>Threshold(): otsu阈值粗分+watershed细分</li>
+<li>Properties(): 计算分割块的属性(坐标,朝向,大小...)</li>
+<li>Clustering(): 将2D分割按距离层次聚类</li>
+<li>Check(): 可视化分割结果  </li>
+</ul>
+<h2 id="toc-7">License</h2>
+<p>BSD</p>
+
+                </div>
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'septicmk';
+                    
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        </div>
+    </div>
+    <div class="container-narrow">
+        <footer>
+            <p>&copy; 2015 septicmk with help form <a href="https://github.com/lepture/mistune" target="_blank">mistune</a>.
+            Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/" target="_blank">Wixo</a></p>
+        </footer>
+    </div>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/jquery.imagesloaded.min.js"></script>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/gallery.js"></script>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/bootstrap.min.js"></script>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/jquery.tableofcontents.min.js"></script>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/tocgenerator.min.js"></script>
+    <script src="/home/septicmk/Miki/Miki/html/source/js/main.js"></script>
+    <link rel="stylesheet" href="/home/septicmk/Miki/Miki/html/source/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+    <script src="/home/septicmk/Miki/Miki/html/source/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript">
+    (function($){
+    $('.fancybox').fancybox();
+    })(jQuery);
+    </script>
+</body>
+</html>

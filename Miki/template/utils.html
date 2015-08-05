@@ -1,0 +1,28 @@
+{% macro btn(value, link, type='info') -%}
+<a class="btn btn-{{type}}" href="{{link}}" target="_blank" rel="external">{{value}}</a>
+{%- endmacro %}
+
+{% macro label(value, type='info') -%}
+<span class="label label-{{type}}">{{value}}</span>
+{%- endmacro %}
+
+{% macro badge(number) -%}
+<span class="badge">{{number}}</span>
+{%- endmacro %}
+
+{% macro alert(value, type='danger') -%}
+<div class="alert alert-{{type}}">
+    {% if type == 'warning' %}
+    <i class="fa fa-bell"></i>
+    {% elif type == 'danger' %}
+    <i class="fa fa-bug"></i>
+    {% elif type == 'success' %}
+    <i class="fa fa-lightbulb-o"></i>
+    {% else %}
+    <i class="fa fa-info"></i>
+    {% endif %}
+    {{value}}
+</div>
+{%- endmacro %}
+
+

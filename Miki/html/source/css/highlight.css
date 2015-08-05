@@ -1,0 +1,67 @@
+pre, .source{  
+  background: #333 !important;
+  margin: 0.5em 0;
+  padding: 1em 2%;
+  overflow: auto;
+  color: #ccc;  
+  font-size: 14px;
+  text-shadow: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;  
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 0;
+  line-height: 20px;
+}
+
+code {
+  padding-right: 20px;
+  background: #eee;
+  border: 1px solid #d6d6d6;
+  padding: 0 5px;
+  margin: 0 2px;
+  font-size: 90%;
+  text-shadow: 0 1px #fff;  
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.source .linenos pre{
+  text-align: left;
+  padding-right: 20px;
+  width: 100%;
+  color: #666;  
+}
+
+pre,
+code {
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;  
+}
+
+pre code {
+  background: none;
+  text-shadow: none;
+  padding: 0;
+}
+
+.source pre {
+  border: none;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+}
+
+.source table {
+  margin: 0;
+  width: auto;  
+}
+
+.source td {
+  border: none;
+  padding: 0;  
+}
+
+
+

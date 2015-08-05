@@ -1,0 +1,80 @@
+{% macro mk_dir(dict, root_path) -%}
+<div class="panel-group" id="notebook"> 
+    {% for k,l in dict.iteritems() %}
+        <div class="panel panel-default"> 
+            <div class="panel-heading">
+                <a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}">
+                <i class="fa fa-folder"></i> {{k}}</a>
+            </div>
+            <a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a> 
+            <div id="{{k}}" class="panel-collapse collapse in">
+                <a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a>
+                <div class="panel-body">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a>
+                    <ul class="post"><a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a>
+                        {% for item in l %}
+                        {% if item == l[0] %}
+                        <li class="post-list-item"><a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a><a href="{{root_path}}/{{k}}/{{item}}.html">{{item}}</a></li>
+                        {% else %}
+                        <li class="post-list-item"><a href="{{root_path}}/{{k}}/{{item}}.html">{{item}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+					</ul>
+				</div>
+            </div>
+        </div> 
+    {% endfor %}
+</div>
+{%- endmacro %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Septicmk</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="source/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="source/css/font-awesome.css" type="text/css">
+  <link rel="stylesheet" href="source/css/style.css"  type="text/css">
+  <link rel="stylesheet" href="source/css/highlight.css" type="text/css">
+  <link rel="stylesheet" href="source/css/pygments.css" type="text/css">
+  <link rel="stylesheet" href="source/css/google-fonts.css" type="text/css">
+  <link rel="stylesheet" href="source/css/responsive.css" type="text/css">  
+  <link rel="stylesheet" href="source/css/sidenav.css" type="text/css">  
+  <script src="source/js/jquery-2.0.3.min.js"></script>
+</head>
+<body  id="body" data-spy="scroll" data-target=".toc">
+    <div class="container" id="container">
+        <div class=content>
+            <div class=page-header>
+                <h1>
+                    <a class="brand" href="{{root_path}}/index.html">Septicmk</a>
+                </h1>
+            </div>
+            <div class="row page">
+                <div class="col-md-12">
+                    {{ mk_dir(dist,root_path) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-narrow">
+        <footer>
+            <p>&copy; 2015 septicmk with help form <a href="https://github.com/lepture/mistune" target="_blank">mistune</a>.
+            Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/" target="_blank">Wixo</a></p>
+        </footer>
+    </div>
+<script src="source/js/jquery.imagesloaded.min.js"></script>
+<script src="source/js/gallery.js"></script>
+<script src="source/js/bootstrap.min.js"></script>
+<script src="source/js/jquery.tableofcontents.min.js"></script>
+<script src="source/js/tocgenerator.min.js"></script>
+<script src="source/js/main.js"></script>
+<link rel="stylesheet" href="source/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="source/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+</body>
+</html>

@@ -45,7 +45,7 @@ def md2html(md_pwd, mdp, template, root_path):
         tool.log('error')('html dir not found')
 
 
-def md2html_all(mdp, template):
+def md2html_all(mdp, template, root_path):
     import shutil
     pwd = os.getcwd()
     _pwd = os.path.join(pwd, "html")
@@ -55,7 +55,7 @@ def md2html_all(mdp, template):
         shutil.copytree("source", os.path.join(_pwd, "source"))
     dist = {}
     for md_pwd in get_post_list(os.path.join(pwd, "post")):
-        args = md2html(md_pwd, mdp, template, _pwd)
+        args = md2html(md_pwd, mdp, template, root_path)
         title = args['title']
         categories = args['categories']
         if categories in dist.keys():
@@ -67,7 +67,7 @@ def md2html_all(mdp, template):
         template = open('template/index.html','r').read()
     except:
         tool.log('error')('index template not found')
-    html = Environment().from_string(template).render(dist=dist, root_path=_pwd) 
+    html = Environment().from_string(template).render(dist=dist, root_path=root_path) 
     f = open('html/index.html', 'w')
     f.write(html)
 

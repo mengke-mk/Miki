@@ -1,8 +1,11 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh">
 <head>
 <title>{{title}} | Septicmk</title>
+<link rel="alternate" hreflang="zh-Hans" href="{{this_href}}">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name = "author" content="septicmk"> 
+  {{meta}}
   <link rel="stylesheet" href="{{root_path}}/source/css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="{{root_path}}/source/css/font-awesome.css" type="text/css">
   <link rel="stylesheet" href="{{root_path}}/source/css/style.css"  type="text/css">
@@ -18,7 +21,7 @@
         <div class=content>
             <div class=page-header>
                 <h1>
-                    <a class="brand" href="{{root_path}}/index.html">Septicmk</a>
+                    <a class="brand" href="{{root_path}}/index.html" hreflang="zh">Septicmk</a>
                     <span class="split"></span>
                     <span class="title">{{title}}</span>
                 </h1>
@@ -28,13 +31,12 @@
                     <!-- toc -->
                     <script type="text/javascript">
 		                jQuery(document).ready(function() {
- 		                    generateWikiTOC('.note', '.toc', 2, 2);
+ 		                        generateWikiTOC('.note', '.toc', 2, 2);
 		                });
                     </script>
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-9 note">
                     {{content}}
-                </div>
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES * * */
@@ -48,10 +50,13 @@
                     })();
                 </script>
                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-            </div>
+
+                </div>
+             </div>
         </div>
     </div>
     <div class="container-narrow">
+    <a id="gotop" href="#" style="display: inline;"><span>▲</span></a>
         <footer>
             <p>&copy; 2015 septicmk with help form <a href="https://github.com/lepture/mistune" target="_blank">mistune</a>.
             Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/" target="_blank">Wixo</a></p>

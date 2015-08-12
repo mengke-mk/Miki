@@ -12,11 +12,13 @@
                 <div class="panel-body">
                     <a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a>
                     <ul class="post"><a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a>
-                        {% for item in l %}
+                        {% for it in l %}
+                        {% set item = it[0] %}
+                        {% set item_name = it[1] %}
                         {% if item == l[0] %}
-                        <li class="post-list-item"><a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a><a href="{{root_path}}/{{k}}/{{item}}.html">{{item}}</a></li>
+                        <li class="post-list-item"><a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#{{k}}"></a><a href="./{{k}}/{{item}}.html" hreflang="zh">{{item_name}}</a></li>
                         {% else %}
-                        <li class="post-list-item"><a href="{{root_path}}/{{k}}/{{item}}.html">{{item}}</a></li>
+                        <li class="post-list-item"><a href="./{{k}}/{{item}}.html" hreflang="zh">{{item_name}}</a></li>
                         {% endif %}
                         {% endfor %}
 					</ul>
@@ -28,10 +30,14 @@
 {%- endmacro %}
 
 <!DOCTYPE HTML>
-<html>
+<html lang="zh">
 <head>
 <title>Septicmk</title>
+<link rel="alternate" hreflang="zh-Hans" href="blog.septicmk.com/index.html">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="septicmk">
+  <meta name="description" content="I'am septicmk, a programmer from Beijing. This is my blog">
+  <meta name="Keywords" content="spark, github, python, ACM, MPI">
   <link rel="stylesheet" href="source/css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="source/css/font-awesome.css" type="text/css">
   <link rel="stylesheet" href="source/css/style.css"  type="text/css">
@@ -47,7 +53,7 @@
         <div class=content>
             <div class=page-header>
                 <h1>
-                    <a class="brand" href="{{root_path}}/index.html">Septicmk</a>
+                    <a class="brand" href="{{root_path}}/index.html" hreflang="zh">Septicmk</a>
                 </h1>
             </div>
             <div class="row page">
